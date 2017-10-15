@@ -11,7 +11,7 @@ services:
     - "$PWD/html:/usr/share/nginx/html"
     ports:
     - 80:80 
-  web:
+  dev:
     build: .
     volumes:
     - "$PWD:/app"
@@ -20,6 +20,7 @@ services:
     working_dir: /app
     environment:
     - "FLASK_APP=page.py"
+    - "FLASK_DEBUG=1"
     command: flask run --host=0.0.0.0
   prod:
     build: .
